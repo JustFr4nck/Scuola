@@ -36,7 +36,7 @@ foreach ($arr as $val) {
 <body>
     <div>
         <nav class="flex flex-col items-center justify-center border bg-gray-200 h-20">
-            <h1 class="text-3xl font-bold text-red-600">VERIFICA NUMERI</h1>
+            <h1 class="text-3xl font-bold text-red-600">VERIFICA MULTIPLI DI 3 FINO A 100</h1>
         </nav>
         <div class="flex flex-col items-center pt-40">
             <table class="bg-blue-200">
