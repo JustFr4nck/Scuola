@@ -28,7 +28,8 @@ function printAll($arr)
     return;
 }
 
-function media($arr){
+function media($arr)
+{
 
     $sum = 0;
 
@@ -53,15 +54,16 @@ function reversePrintAll($arr)
     return;
 }
 
-function associativArr($arr, $assArr){
+function associativArr($arr, $assArr)
+{
 
     $index = 0;
 
-    foreach ($assArr as $x => $y){
+    foreach ($assArr as $x => $y) {
 
-        if($arr[$index] % 2 === 0){
-        $assArr[$x] = $arr[$index];
-        echo "___", $x, ": ", $assArr[$x];
+        if ($arr[$index] % 2 === 0) {
+            $assArr[$x] = $arr[$index];
+            echo "___", $x, ": ", $assArr[$x];
         }
         $index++;
     }
@@ -77,15 +79,22 @@ function associativArr($arr, $assArr){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazyArray</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <h4>Numeri presenti: <?php printAll($arr); ?></h4>
-    <h4>Numero minimo: <?php echo min($arr) ?></h4>
-    <h4>Numero massimo: <?php echo max($arr) ?></h4>
-    <h4>Media valori: <?php media($arr)?></h4>
-    <h4>Numeri presenti senso opposto: <?php reversePrintAll($arr) ?></h4>
-    <h4>Numeri pari: <?php associativArr($arr, $assArr) ?></h4>
+    <div class="flex flex-col items-center justify-center h-screen" >
+        <div class="flex flex-col justify-center items-center bg-gray-200 rounded-md pd-10">
+            <h4 class="text-blue-400 font-bold">Numeri presenti: <?php printAll($arr); ?></h4>
+            <h4 class="text-orange-400 font-bold">Numero minimo: <?php echo min($arr) ?></h4>
+            <h4 class="text-red-400 font-bold">Numero massimo: <?php echo max($arr) ?></h4>
+            <h4 class="text-green-400 font-bold">Media valori: <?php media($arr) ?></h4>
+            <h4 class="text-purple-400 font-bold">Numeri presenti senso opposto: <?php reversePrintAll($arr) ?></h4>
+            <h4 class="text-white font-bold">Numeri pari: <?php associativArr($arr, $assArr) ?></h4>
+        </div>
+
+    </div>
+
 </body>
 
 </html>
