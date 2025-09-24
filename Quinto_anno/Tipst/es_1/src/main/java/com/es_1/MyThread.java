@@ -1,14 +1,14 @@
 package com.es_1;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class MyThread extends Thread{
 
     private String nome;
-    private int pos;
 
-    public MyThread(String nome, int pos){
+    public MyThread(String nome){
 
         this.nome = nome;
-        this.pos = pos;
     }
 
     //GET E SET
@@ -21,20 +21,16 @@ public class MyThread extends Thread{
         this.nome = nome;
     }
 
-     public int getPos() {
-        return pos;
-    }
-
-    public void setPos(int pos) {
-        this.pos = pos;
-    }
-
     //METODI
 
     @Override
     public void run(){
-
-        System.out.println(this.nome + " è arrivato in posizione " + this.pos);
+        try {
+            Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 5000));
+        } catch (Exception e) {
+            System.out.println("ERRORE");
+        }
+        System.out.println(this.nome + " è arrivato! ");
     }
 
    
