@@ -34,7 +34,6 @@ public class App {
         for (int i = 0; i < x; i++) {
             arr[i] = new MyThread("CAVALLO " + (i + 1));
             arr[i].start();
-            
         }
 
         

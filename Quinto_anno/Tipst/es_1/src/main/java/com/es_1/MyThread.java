@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MyThread extends Thread{
 
     private String nome;
+    private double time;
 
     public MyThread(String nome){
 
@@ -26,11 +27,12 @@ public class MyThread extends Thread{
     @Override
     public void run(){
         try {
-            Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 5000));
+            time = ThreadLocalRandom.current().nextInt(1000, 5000);
+            Thread.sleep((int)time);
         } catch (Exception e) {
             System.out.println("ERRORE");
         }
-        System.out.println(this.nome + " è arrivato! ");
+        System.out.println(this.nome + " è arrivato in tempo " + (time/1000) + " secondi");
     }
 
    
