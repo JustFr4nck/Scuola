@@ -23,7 +23,7 @@ switch ($frequenza){
         break;
     case "trimestrale":
         $price -= $price /100 * 15;
-        break; // 👈 mancava il break!
+        break; 
     case "annuale":
         $price -= $price /100 * 20;
         break;
