@@ -1,4 +1,5 @@
 package com.es_3_server;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -44,3 +45,5 @@ public class Main {
         
     }
 }
+
+//10.22.9.6
