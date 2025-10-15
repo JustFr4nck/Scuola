@@ -1,0 +1,58 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrazyForm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <form action="./src/server.php" method="get" onchange="validateForm()">
+      <div>
+        <label for="name">Inserisci nome: </label>
+        <input
+          class="border"
+          inputmode="text"
+          pattern="^[a-zA-Z\s]+$"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="nome"
+          required
+        />
+      </div>
+      <div>
+        <label for="email">Inserire Email: </label>
+        <input class="border" type="email" name="email" id="email" required placeholder="email">
+      </div>
+      <div>
+        <label for="message">Inserire messaggio facoltativo</label>
+        <textarea class="border" name="message" id="message" maxlength="300"></textarea>
+      </div>
+
+      <button id="butSub" class="border" type="submit" disabled>submit</button>
+    </form>
+
+    <script>
+        function validateForm(){
+
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const butSub = document.getElementById("butSub");
+
+            if(name && email){
+
+                butSub.disabled = false;
+            }
+            else{
+                butSub.disabled = true;
+            }
+        }
+    </script>
+  </body>
+</html>
