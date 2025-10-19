@@ -1,58 +1,105 @@
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CrazyForm</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <form action="./src/server.php" method="get" onchange="validateForm()">
-      <div>
-        <label for="name">Inserisci nome: </label>
+  <body
+    class="bg-gradient-to-br from-sky-100 to-blue-200 min-h-screen flex items-center justify-center"
+  >
+    <form
+      action="./src/server.php"
+      method="get"
+      onchange="validateForm()"
+      class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md space-y-6 border border-gray-200"
+    >
+      <h1 class="text-2xl font-bold text-center text-blue-700">CrazyForm</h1>
+      <p class="text-center text-gray-500 text-sm">
+        Compila i campi per continuare
+      </p>
+
+      <div class="flex flex-col">
+        <label for="name" class="font-medium text-gray-700 mb-1">Nome</label>
         <input
-          class="border"
+          class="border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-lg px-3 py-2 transition-all"
           inputmode="text"
-          pattern="^[a-zA-Z\s]+$"
+          pattern="^[a-zA-ZÀ-ÿ\s]+$"
           type="text"
           name="name"
           id="name"
-          placeholder="nome"
+          placeholder="Inserisci il tuo nome"
           required
         />
-      </div>
-      <div>
-        <label for="email">Inserire Email: </label>
-        <input class="border" type="email" name="email" id="email" required placeholder="email">
-      </div>
-      <div>
-        <label for="message">Inserire messaggio facoltativo</label>
-        <textarea class="border" name="message" id="message" maxlength="300"></textarea>
+        <p id="nameErr" class="text-sm text-red-500 hidden mt-1">
+          Solo lettere e spazi consentiti.
+        </p>
       </div>
 
-      <button id="butSub" class="border" type="submit" disabled>submit</button>
+      <div class="flex flex-col">
+        <label for="email" class="font-medium text-gray-700 mb-1">Email</label>
+        <input
+          class="border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-lg px-3 py-2 transition-all"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="esempio@mail.com"
+          required
+        />
+        <p id="emailErr" class="text-sm text-red-500 hidden mt-1">
+          Inserisci un’email valida.
+        </p>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="message" class="font-medium text-gray-700 mb-1"
+          >Messaggio (facoltativo)</label
+        >
+        <textarea
+          class="border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-lg px-3 py-2 transition-all resize-none"
+          name="message"
+          id="message"
+          maxlength="300"
+          rows="4"
+          placeholder="Scrivi un messaggio (max 300 caratteri)"
+        ></textarea>
+      </div>
+
+      <button
+        id="butSub"
+        class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg shadow hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+        type="submit"
+        disabled
+      >
+        Invia
+      </button>
     </form>
 
     <script>
-        function validateForm(){
 
-            const name = document.getElementById("name");
-            const email = document.getElementById("email");
-            const butSub = document.getElementById("butSub");
+      function validateForm() {
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const butSub = document.getElementById("butSub");
+        const nameErr = document.getElementById("nameErr");
+        const emailErr = document.getElementById("emailErr");
 
-            if(name && email){
+        const nameValid = /^[a-zA-ZÀ-ÿ\s]+$/.test(name.value.trim());
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+          email.value.trim()
+        );
 
-                butSub.disabled = false;
-            }
-            else{
-                butSub.disabled = true;
-            }
-        }
+        nameErr.classList.toggle(
+          "hidden",
+          nameValid || name.value.trim() === ""
+        );
+        emailErr.classList.toggle(
+          "hidden",
+          emailValid || email.value.trim() === ""
+        );
+
+        butSub.disabled = !(nameValid && emailValid);
+      }
     </script>
   </body>
 </html>

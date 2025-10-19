@@ -1,27 +1,40 @@
 <?php 
     
 
-    $nome = $_GET["name"];
-    $email = $_GET["email"];
-    $message = $_GET["message"];
+    function sanitize_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+    
+    $nome = sanitize_input($_GET["name"]);
+    $email = sanitize_input($_GET["email"]);
+    $message = sanitize_input($_GET["message"]);
 
-    function sanitize_input($nome) {
-        $nome = preg_replace("/[a-zA-Z\s]+$/","", $nome);
-        return $nome;
+    $error = false;
+
+    if (!preg_match("/^[a-zA-ZÀ-ÿ ']+$/u", $nome)) {
+        echo "ERRORE: NOME NON VALIDO<br>";
+        $error = true;
     }
 
-    $nome = sanitize_input($nome);
-    if(preg_match("/[a-zA-Z\s]/", $nome)){
 
-        echo "ERRORE: NOME NON VALIDO";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "ERRORE: EMAIL INVALIDA<br>";
+        $error = true;
     }
 
-    if(!filter_var(trim($email), FILTER_SANITIZE_EMAIL)){
-
-        echo "ERRORE: EMAIL INVALIDA";
-    };
-    if(strlen($message) > 300){
-
-        echo "ERRORE: MESSAGGIO TROPPO LUNGO";
+    if (strlen($message) > 300) {
+        echo "ERRORE: MESSAGGIO TROPPO LUNGO<br>";
+        $error = true;
     }
+
+    if (!$error) {
+        echo "<strong>Dati ricevuti correttamente!</strong><br>";
+        echo "Nome: $nome<br>";
+        echo "Email: $email<br>";
+        echo "Messaggio: $message<br>";
+    }
+
 ?>
