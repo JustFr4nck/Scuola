@@ -10,7 +10,7 @@
   >
     <form
       action="./src/server.php"
-      method="get"
+      method="POST"
       onchange="validateForm()"
       class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md space-y-6 border border-gray-200"
     >
@@ -75,7 +75,7 @@
       </button>
     </form>
 
-    <script>
+     <script>
 
       function validateForm() {
         const name = document.getElementById("name");
@@ -101,5 +101,6 @@
         butSub.disabled = !(nameValid && emailValid);
       }
     </script>
+    
   </body>
 </html>
