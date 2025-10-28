@@ -35,6 +35,7 @@ public class MyThread extends Thread {
             }
 
             fraseReceived = fraseReceived.toUpperCase();
+            System.out.println(fraseReceived);
             out.println(fraseReceived);
         
         } while (true);
@@ -42,6 +43,7 @@ public class MyThread extends Thread {
             e.printStackTrace();
         }
         
+        System.out.println("Utente Disconnesso");
         
 
 

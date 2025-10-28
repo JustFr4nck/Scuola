@@ -12,13 +12,14 @@ public class Main {
         do{
 
             Socket myS = ss.accept();                        //crea un socket in ascolta da server, accept blocca, finche qualcuno non si collega alla porta 3000
-            System.out.println("Qualuno si è collegato");
+            System.out.println("Qualuno si è collegato " + myS.getInetAddress());
 
             MyThread t = new MyThread(myS);
 
             t.start();
 
-        }while(true);                               //chiudo la porta
+        }while(true);
+        
         
     }
 }
