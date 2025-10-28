@@ -44,6 +44,11 @@ public class MyThread extends Thread {
         }
         
         System.out.println("Utente Disconnesso");
+        try {
+            s.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
 
 
