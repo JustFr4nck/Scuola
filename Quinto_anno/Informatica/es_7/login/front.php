@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "checksession.php";
 
 ?>
 <!DOCTYPE html>
@@ -13,14 +13,7 @@ session_start();
 
 <body>
     <div>
-        <p><?php
-        if (session_status() === PHP_SESSION_ACTIVE) {
-
-            echo "Benvenuto Admin";
-        } else {
-
-            header("location:login.php");
-        } ?></p>
+        <p>Benvenuto admin!!!</p>
         <a href="logout.php">logout</a>
     </div>
 </body>

@@ -46,7 +46,7 @@ $prodotto8 = new Prodotti(8, "alexa", 27);
 $prodotto9 = new Prodotti(9, "smartwatch", 299);
 
 $_SESSION["prodotti"] = [
-    
+
     $prodotto1,
     $prodotto2,
     $prodotto3,
@@ -58,7 +58,7 @@ $_SESSION["prodotti"] = [
     $prodotto9,
 ];
 
-
+$inc = 0;
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +76,15 @@ $_SESSION["prodotti"] = [
     <div class="text-center my-8">
         <h1 class="text-3xl font-bold">I nostri prodotti</h1>
     </div>
-
+    <div>Carrello: <?php
+        if(isset($_SESSION["carrello"])){
+            foreach ($_SESSION["carrello"] as $value) {
+            $inc++;
+        }
+        }
+        echo  $inc;
+        
+    ?></div>
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
         <?php
         foreach ($_SESSION["prodotti"] as $product) {
@@ -91,6 +99,7 @@ $_SESSION["prodotti"] = [
         }
         ?>
     </div>
+
 </body>
 
 </html>

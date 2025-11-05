@@ -9,6 +9,10 @@ if (isset($_POST["username"]) && isset($_POST["pw"]) && $_POST["username"] === $
     $_SESSION["logged"] = true;
     header("location:front.php");
 }
+else{
+
+    $_SESSION["logged"] = false;
+}
 
 
 ?>
