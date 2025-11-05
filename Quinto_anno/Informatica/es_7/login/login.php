@@ -2,13 +2,12 @@
 session_start();
 
 $realUn = "admin";
-$realPw = 1234;
+$realPw = "1234";
 
-if(isset($_POST["username"]) && isset($_POST["pw"]) && $_POST["username"] === $realUn && $_POST["realPw"] === $realPw){
+if (isset($_POST["username"]) && isset($_POST["pw"]) && $_POST["username"] === $realUn && $_POST["pw"] === $realPw) {
 
-    $_SESSION["user"] = $realUn;
-    $_SESSION["pw"] = $realPw;
-    
+    $_SESSION["logged"] = true;
+    header("location:front.php");
 }
 
 
@@ -26,19 +25,21 @@ if(isset($_POST["username"]) && isset($_POST["pw"]) && $_POST["username"] === $r
 
 <body class="bg-gray-100 min-h-screen flex items-center justify-center font-sans">
 
-    <form action="front.php" method="post" class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm">
+    <form action="login.php" method="post" class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm">
         <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h1>
 
         <div class="mb-4">
             <label for="username" class="block text-gray-700 font-medium mb-2">Inserisci username:</label>
             <input type="text" id="username" name="username"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
         </div>
 
         <div class="mb-6">
             <label for="pw" class="block text-gray-700 font-medium mb-2">Inserisci password:</label>
             <input type="password" id="pw" name="pw"
-                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
         </div>
 
         <button

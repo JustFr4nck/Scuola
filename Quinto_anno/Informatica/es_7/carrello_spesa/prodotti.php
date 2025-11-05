@@ -46,6 +46,7 @@ $prodotto8 = new Prodotti(8, "alexa", 27);
 $prodotto9 = new Prodotti(9, "smartwatch", 299);
 
 $_SESSION["prodotti"] = [
+    
     $prodotto1,
     $prodotto2,
     $prodotto3,
