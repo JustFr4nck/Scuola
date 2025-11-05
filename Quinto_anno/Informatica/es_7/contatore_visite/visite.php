@@ -9,9 +9,6 @@ if (isset($_SESSION["contatore"])) {
     $_SESSION["contatore"] = 1;
 }
 
-
-
-
 if (isset($_POST["reset"]) || isset($_GET["reset"])) {
     $reset = $_POST["reset"] ?? $_GET["reset"] ?? false;
     if ($reset) {
@@ -21,9 +18,6 @@ if (isset($_POST["reset"]) || isset($_GET["reset"])) {
 
 
 }
-
-
-
 
 ?>
 
