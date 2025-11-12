@@ -6,6 +6,7 @@ if(isset($_POST["piatti"]) && isset($_POST["quantita"]) && isset($_POST["tables"
     $_SESSION["plates"] = $_POST["piatti"];
     $_SESSION["qta"] = $_POST["quantita"];
     $_SESSION["tavoli"] = $_POST["tables"];
+    
 }
 else{
     header("location:management.php");
